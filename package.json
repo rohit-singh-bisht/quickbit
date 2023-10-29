@@ -1,0 +1,24 @@
+{
+  "name": "quickbit",
+  "version": "1.0.0",
+  "description": "An webapp to shorten url links.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohit-singh-bisht/quickbit.git"
+  },
+  "author": "Rohit Singh Bisht",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rohit-singh-bisht/quickbit/issues"
+  },
+  "homepage": "https://github.com/rohit-singh-bisht/quickbit#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.6.3"
+  }
+}
