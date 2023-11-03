@@ -26,26 +26,32 @@ interface props {
 interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
-  themeColor: ThemeColor | undefined;
+  themeColor: ThemeColor;
 }
 
 const ColorThemeContext = createContext<ThemeContextType>({
   theme: "dark",
   toggleTheme: () => {},
-  themeColor: undefined,
+  themeColor: themeStyles["dark"],
 });
 
 const ColorThemeContextProvider: React.FC<props> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>("dark");
-  const [themeColor, setThemeColor] = useState<ThemeColor | undefined>(
-    undefined
-  );
+  const [themeColor, setThemeColor] = useState<ThemeColor>(themeStyles["dark"]);
 
   useEffect(() => {
     setThemeColor(themeStyles[theme]);
+    if (theme === "dark") {
+      document.body.classList.remove("light");
+      document.body.classList.add("dark");
+      return;
+    }
+    document.body.classList.remove("dark");
+    document.body.classList.add("light");
   }, [theme]);
 
   const toggleTheme = () => {
+    console.log(theme);
     setTheme((prevTheme: string) => (prevTheme === "dark" ? "light" : "dark"));
   };
 

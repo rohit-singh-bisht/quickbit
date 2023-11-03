@@ -5,6 +5,13 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
+body.dark {
+  background-color: #0b101b;
+}
+
+body.light {
+  background-color: #ffffff;
+}

@@ -3,11 +3,7 @@ import { useThemeContext } from "../context/ColorThemeContext";
 import styled from "styled-components";
 
 interface HeaderProps {
-  themeColor:
-    | {
-        gradient: string;
-      }
-    | undefined;
+  themeColor: { gradient: string };
 }
 
 const HeaderStyled = styled.header<HeaderProps>`
@@ -25,7 +21,6 @@ const HeaderStyled = styled.header<HeaderProps>`
 
 const Header: React.FC = () => {
   const { themeColor } = useThemeContext();
-  console.log("themeColor", themeColor);
 
   return (
     <HeaderStyled themeColor={themeColor}>
