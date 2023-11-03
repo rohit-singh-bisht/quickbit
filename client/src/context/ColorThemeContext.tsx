@@ -51,7 +51,6 @@ const ColorThemeContextProvider: React.FC<props> = ({ children }) => {
   }, [theme]);
 
   const toggleTheme = () => {
-    console.log(theme);
     setTheme((prevTheme: string) => (prevTheme === "dark" ? "light" : "dark"));
   };
 
