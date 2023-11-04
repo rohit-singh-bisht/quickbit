@@ -11,41 +11,40 @@ interface Styles {
 }
 
 const ToggleThemeStyle = styled.div<Styles>`
-  padding: 21px 25px;
+  width: 27rem;
+  height: 5.8rem;
+  padding: 2.1rem 2.5rem;
   display: inline-flex;
-  gap: 14px;
-  transform-origin: center center;
-  transform: translateY(-50%) rotate(90deg);
+  justify-content: space-around;
+  align-items: center;
+  gap: 1.4rem;
   position: fixed;
-  right: 50px;
-  top: 50%;
-  border-radius: 48px;
-  border: 1px solid ${({ themeColor }) => themeColor?.border};
+  right: 5rem;
+  top: calc(50% + 16.4rem);
+  transform-origin: top right;
+  transform: translateY(-50%) rotate(90deg);
+  border-radius: 4.8rem;
+  border: 0.1rem solid ${({ themeColor }) => themeColor?.border};
   background: ${({ themeColor }) => themeColor?.textGrey};
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
-  .light__theme {
+  box-shadow: 0rem 0.4rem 1rem 0rem rgba(0, 0, 0, 0.1);
+  .toggle__div {
     color: #c9ced6;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: 300;
-    line-height: 28px;
+    line-height: 2.8rem;
     display: flex;
-    gap: 15px;
     transition: all 0.3s ease-in;
+    cursor: pointer;
+    padding: 2.1rem 2.5rem;
     &.active {
       font-weight: 700;
     }
   }
+  .light__theme {
+    gap: 1.5rem;
+  }
   .dark__theme {
-    color: #c9ced6;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 28px;
-    display: flex;
-    gap: 10px;
-    transition: all 0.3s ease-in;
-    &.active {
-      font-weight: 700;
-    }
+    gap: 1rem;
   }
 `;
 
@@ -56,13 +55,17 @@ const ToggleTheme = () => {
     <ToggleThemeStyle themeColor={themeColor}>
       <div
         onClick={toggleTheme}
-        className={`light__theme ${theme === "light" ? "active" : ""}`}
+        className={`light__theme toggle__div ${
+          theme === "light" ? "active" : ""
+        }`}
       >
         Light
       </div>
       <div
         onClick={toggleTheme}
-        className={`dark__theme ${theme === "dark" ? "active" : ""}`}
+        className={`dark__theme toggle__div ${
+          theme === "dark" ? "active" : ""
+        }`}
       >
         Dark
       </div>

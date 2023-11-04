@@ -7,12 +7,12 @@ interface HeaderProps {
 }
 
 const HeaderStyled = styled.header<HeaderProps>`
-  padding: 40px 55px;
+  padding: 4rem 5.5rem;
   .logo {
-    font-size: 36px;
+    font-size: 3.6rem;
     font-style: normal;
     font-weight: 800;
-    line-height: 44px;
+    line-height: 4.4rem;
     background-image: ${({ themeColor }) => themeColor?.gradient};
     color: transparent;
     -webkit-background-clip: text;
