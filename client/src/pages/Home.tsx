@@ -4,16 +4,20 @@ import { Styles } from "../interfaces";
 import { useThemeContext } from "../context/ColorThemeContext";
 
 const HomeStyle = styled.div<Styles>`
-  .title {
-    background-image: ${({ themeColor }) => themeColor?.gradient};
-    color: transparent;
-    -webkit-background-clip: text;
-    font-size: 6rem;
-    font-weight: 800;
-    line-height: 8rem;
-    text-align: center;
+  .title__wrapper {
     margin-top: 13rem;
     margin-bottom: 2rem;
+    text-align: center;
+    .title {
+      background-image: ${({ themeColor }) => themeColor?.gradient};
+      color: transparent;
+      -webkit-background-clip: text;
+      font-size: 6rem;
+      font-weight: 800;
+      line-height: 8rem;
+      text-align: center;
+      display: inline-block;
+    }
   }
   .subtitle {
     max-width: 63.4rem;
@@ -31,7 +35,9 @@ const Home = () => {
   const { themeColor } = useThemeContext();
   return (
     <HomeStyle themeColor={themeColor}>
-      <h1 className="title">Shorten Your Loooong Links :)</h1>
+      <div className="title__wrapper">
+        <h1 className="title">Shorten Your Loooong Links :)</h1>
+      </div>
       <p className="subtitle">
         Quickbit is an efficient and easy-to-use URL shortening service that
         streamlines your online experience.

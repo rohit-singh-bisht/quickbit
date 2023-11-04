@@ -10,9 +10,11 @@ const HeaderStyled = styled.header<Styles>`
     font-style: normal;
     font-weight: 800;
     line-height: 4.4rem;
-    background-image: ${({ themeColor }) => themeColor?.gradient};
+    background-image: ${({ themeColor }) => themeColor?.gradientRadial};
+    background-position: 10px 24px;
     color: transparent;
     -webkit-background-clip: text;
+    display: inline-block;
   }
 `;
 
