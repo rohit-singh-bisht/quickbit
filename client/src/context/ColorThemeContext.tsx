@@ -17,6 +17,7 @@ interface ThemeColor {
   textGrey: string;
   gradient: string;
   gradientRadial: string;
+  border: string;
 }
 
 interface props {
