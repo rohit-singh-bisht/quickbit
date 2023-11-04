@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ToggleTheme from "./components/ToggleTheme";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -8,7 +9,9 @@ function App() {
       <ToggleTheme />
       <BrowserRouter>
         <Header />
-        <Routes>{/* <Route path="/" element={}></Route> */}</Routes>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+        </Routes>
       </BrowserRouter>
     </>
   );

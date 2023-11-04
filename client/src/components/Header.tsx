@@ -1,12 +1,9 @@
 import React from "react";
 import { useThemeContext } from "../context/ColorThemeContext";
 import styled from "styled-components";
+import { Styles } from "../interfaces";
 
-interface HeaderProps {
-  themeColor: { gradient: string };
-}
-
-const HeaderStyled = styled.header<HeaderProps>`
+const HeaderStyled = styled.header<Styles>`
   padding: 4rem 5.5rem;
   .logo {
     font-size: 3.6rem;

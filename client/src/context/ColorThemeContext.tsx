@@ -9,7 +9,7 @@ import { themeStyles } from "../shared/themeStyles";
 
 export type Theme = "light" | "dark";
 
-interface ThemeColor {
+export interface ThemeColor {
   primaryPink: string;
   primaryBlue: string;
   background: string;
