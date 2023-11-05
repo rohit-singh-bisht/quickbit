@@ -9,6 +9,11 @@ body {
   font-size: 10px;
 }
 
+a,
+button {
+  cursor: pointer;
+}
+
 @media (min-width: 1600px) {
   html,
   body {
