@@ -18,6 +18,7 @@ export interface ThemeColor {
   gradient: string;
   gradientRadial: string;
   border: string;
+  inputBackground: string;
 }
 
 interface props {

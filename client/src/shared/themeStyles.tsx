@@ -10,6 +10,7 @@ export const themeStyles = {
     gradientRadial:
       "radial-gradient(12441.24% 97.1% at 5.56% 79.01%, #EB568E 0%, #144EE3 100%);",
     border: "#353C4A",
+    inputBackground: "#181E29",
   },
   light: {
     primaryPink: "#EB568E",
@@ -22,5 +23,6 @@ export const themeStyles = {
     gradientRadial:
       "radial-gradient(12441.24% 97.1% at 5.56% 79.01%, #EB568E 0%, #144EE3 100%);",
     border: "#353C4A",
+    inputBackground: "#fff",
   },
 };
