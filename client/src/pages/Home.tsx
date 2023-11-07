@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Styles } from "../interfaces";
 import { useThemeContext } from "../context/ColorThemeContext";
 import Button from "../components/Button";
+import { Link } from "react-router-dom";
 
 const HomeStyle = styled.div<Styles>`
   .title__wrapper {
@@ -50,9 +51,42 @@ const HomeStyle = styled.div<Styles>`
     }
     .shorten__button {
       position: absolute;
-      right: 8px;
+      right: 0.8rem;
       top: 50%;
       transform: translateY(-50%);
+    }
+  }
+  .register__now__wrapper {
+    height: 9rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    .blurred {
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(
+        180deg,
+        rgba(11, 16, 27, 0) 15.74%,
+        rgba(11, 16, 27, 0.57) 50.38%
+      );
+      filter: blur(2.1rem);
+      backdrop-filter: blur(2rem);
+    }
+    .text {
+      color: ${({ themeColor }) => themeColor?.text};
+      font-size: 1.4rem;
+      font-weight: 300;
+      line-height: 0rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      .register__now {
+        color: ${({ themeColor }) => themeColor?.primaryBlue};
+        display: inline-block;
+      }
     }
   }
 `;
@@ -81,6 +115,16 @@ const Home = () => {
             title={"Shorten Now!"}
             className="shorten__button"
           />
+        </div>
+
+        <div className="register__now__wrapper">
+          <div className="blurred" />
+          <div className="text">
+            <Link to="/register" className="link">
+              Register Now
+            </Link>{" "}
+            to enjoy Unlimited History
+          </div>
         </div>
       </div>
     </HomeStyle>

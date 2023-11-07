@@ -16,7 +16,7 @@ const HeaderStyled = styled.header<Styles>`
     font-weight: 800;
     line-height: 4.4rem;
     background-image: ${({ themeColor }) => themeColor?.gradientRadial};
-    background-position: 10px 24px;
+    background-position: 1rem 2.4rem;
     color: transparent;
     -webkit-background-clip: text;
     display: inline-block;

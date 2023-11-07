@@ -42,7 +42,7 @@ const ToggleThemeStyle = styled.div<Styles>`
   }
   .active__bar {
     border-radius: 4.8rem;
-    border: 1px solid ${({ themeColor }) => themeColor?.primaryBlue};
+    border: 0.1rem solid ${({ themeColor }) => themeColor?.primaryBlue};
     background: ${({ themeColor }) => themeColor?.primaryBlue};
     box-shadow: 0rem 0rem 1.4rem 0rem rgba(20, 78, 227, 0.38);
     width: calc(50% - 0.6rem);
