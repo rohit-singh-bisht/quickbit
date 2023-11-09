@@ -3,6 +3,8 @@ import { Styles } from "../interfaces";
 import { useThemeContext } from "../context/ColorThemeContext";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
+import { useFetch } from "../hooks/useFetch";
+import { useState } from "react";
 
 const HomeStyle = styled.div<Styles>`
   .title__wrapper {
@@ -93,6 +95,20 @@ const HomeStyle = styled.div<Styles>`
 
 const Home = () => {
   const { themeColor } = useThemeContext();
+  const { runFetch, isLoading, error, data } = useFetch();
+  const [redirectUrl, setRedirectUrl] = useState<any>();
+
+  const handleClick = () => {
+    if (!redirectUrl) return null;
+    runFetch({
+      url: "",
+      method: "post",
+      body: { url: redirectUrl },
+    });
+  };
+
+  console.log("data", data);
+
   return (
     <HomeStyle themeColor={themeColor}>
       <div className="container">
@@ -109,11 +125,14 @@ const Home = () => {
             type="text"
             className="input"
             placeholder="Enter the link here"
+            value={redirectUrl}
+            onChange={(e) => setRedirectUrl(e.target.value)}
           />
           <Button
             type={"primary"}
             title={"Shorten Now!"}
             className="shorten__button"
+            onClick={handleClick}
           />
         </div>
 

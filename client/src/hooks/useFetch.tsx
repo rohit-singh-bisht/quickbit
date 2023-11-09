@@ -1,4 +1,6 @@
 import { useState } from "react";
+const baseUrl = process.env.REACT_APP_API_PORT;
+console.log("baseUrl", baseUrl);
 
 interface Props {
   url: string;
@@ -19,8 +21,9 @@ export const useFetch = (): FetchData => {
   const [error, setError] = useState<string>("");
 
   const runFetch = async ({ url, method, body }: Props) => {
+    const finalUrl = `${baseUrl}${url}`;
     try {
-      const response = await fetch(url, {
+      const response = await fetch(finalUrl, {
         method,
         headers: {
           "Content-Type": "application/json",
