@@ -1,12 +1,14 @@
 const express = require("express");
 const connectMongoDB = require("./connection");
 const UrlRoutes = require("./routes/url");
+const cors = require('cors');
 
 const app = express();
 const port = 8000;
 
 //middleware for body json
 app.use(express.json());
+app.use(cors());
 
 //Connect to database
 connectMongoDB("mongodb://127.0.0.1:27017/quickbit");
