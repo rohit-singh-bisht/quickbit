@@ -5,6 +5,12 @@ async function handleGenerateNewShortUrl(req, res) {
   const body = req.body;
   if (!body) return res.status(400).json({ msg: "URL is required" });
   const uniqueId = randomstring.generate(8);
+  const foundData = await URL.findOne({ redirectUrl: body.url });
+  if(foundData){
+    return res
+      .status(200)
+      .json({ msg: "URL shorten successfully", shortId: foundData?.shortId, success: true });
+  }
   const result = await URL.create({
     shortId: uniqueId,
     redirectUrl: body.url,
@@ -14,7 +20,7 @@ async function handleGenerateNewShortUrl(req, res) {
   if (result)
     return res
       .status(200)
-      .json({ msg: "URL shorten successfully", shortId: uniqueId });
+      .json({ msg: "URL shorten successfully", shortId: uniqueId, success: true });
 }
 
 async function handleRedirectionToUrl(req, res) {
