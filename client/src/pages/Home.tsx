@@ -58,6 +58,17 @@ const HomeStyle = styled.div<Styles>`
       transform: translateY(-50%);
     }
   }
+  .five_links_prompt {
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-top: 1.6rem;
+    text-align: center;
+    color: ${({ themeColor }) => themeColor?.text};
+    span {
+      font-weight: 700;
+      color: ${({ themeColor }) => themeColor?.primaryPink};
+    }
+  }
   .register__now__wrapper {
     height: 9rem;
     position: fixed;
@@ -97,6 +108,7 @@ const Home = () => {
   const { themeColor } = useThemeContext();
   const { runFetch, isLoading, error, data } = useFetch();
   const [redirectUrl, setRedirectUrl] = useState<any>();
+  const ApiPort = process.env.REACT_APP_API_PORT;
 
   const handleClick = () => {
     if (!redirectUrl) return null;
@@ -106,8 +118,6 @@ const Home = () => {
       body: { url: redirectUrl },
     });
   };
-
-  console.log("data", data);
 
   return (
     <HomeStyle themeColor={themeColor}>
@@ -134,6 +144,17 @@ const Home = () => {
             className="shorten__button"
             onClick={handleClick}
           />
+        </div>
+
+        {data?.success && (
+          <div className="five_links_prompt">
+            {ApiPort}/{data?.shortId}
+          </div>
+        )}
+
+        <div className="five_links_prompt">
+          You can create <span>05</span> more links. Register Now to enjoy
+          Unlimited usage
         </div>
 
         <div className="register__now__wrapper">
