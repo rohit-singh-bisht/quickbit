@@ -11,7 +11,6 @@ async function createUser(req, res) {
       });
 
     const foundData = await USERS.findOne({ username: username, email: email });
-    console.log("foundData", foundData);
     if (foundData)
       return res
         .status(400)
