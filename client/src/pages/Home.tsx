@@ -50,6 +50,10 @@ const HomeStyle = styled.div<Styles>`
       font-weight: 300;
       line-height: 2.8rem;
       text-decoration: none;
+      &.error {
+        border-color: #b63939;
+        animation: zigzag 0.25s ease-in 2;
+      }
     }
     .shorten__button {
       position: absolute;
@@ -102,6 +106,21 @@ const HomeStyle = styled.div<Styles>`
       }
     }
   }
+
+  @keyframes zigzag {
+    0% {
+      transform: translateX(-15px);
+    }
+    25% {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(15px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
 `;
 
 const Home = () => {
@@ -109,9 +128,13 @@ const Home = () => {
   const { runFetch, isLoading, error, data } = useFetch();
   const [redirectUrl, setRedirectUrl] = useState<any>();
   const ApiPort = process.env.REACT_APP_API_PORT;
+  const [inputError, setInputError] = useState(false);
 
   const handleClick = () => {
-    if (!redirectUrl) return null;
+    if (!redirectUrl) {
+      setInputError(true);
+      return null;
+    }
     runFetch({
       url: "",
       method: "post",
@@ -133,10 +156,13 @@ const Home = () => {
         <div className="url__input">
           <input
             type="text"
-            className="input"
+            className={`input ${inputError && "error"}`}
             placeholder="Enter the link here"
             value={redirectUrl}
-            onChange={(e) => setRedirectUrl(e.target.value)}
+            onChange={(e) => {
+              setInputError(false);
+              setRedirectUrl(e.target.value);
+            }}
           />
           <Button
             type={"primary"}
@@ -148,7 +174,8 @@ const Home = () => {
 
         {data?.success && (
           <div className="five_links_prompt">
-            {ApiPort}/{data?.shortId}
+            {ApiPort}
+            {data?.shortId}
           </div>
         )}
 
