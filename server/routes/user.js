@@ -1,11 +1,9 @@
-const express = require('express');
-const USERS = require("../models/user");
+const express = require("express");
+const { createUser, loginUser } = require("../controllers/user");
 
 const router = express.Router();
 
-router.post('/login', async (req, res) => {
-    const body = req.body;
-    console.log('body', body);
-})
+router.post("/register", createUser);
+router.post("/login", loginUser);
 
 module.exports = router;
