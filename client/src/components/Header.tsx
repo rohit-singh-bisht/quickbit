@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Styles } from "../interfaces";
 import { Link } from "react-router-dom";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 const HeaderStyled = styled.header<Styles>`
   padding: 4rem 5.5rem;
@@ -29,6 +30,7 @@ const HeaderStyled = styled.header<Styles>`
 
 const Header: React.FC = () => {
   const { themeColor } = useThemeContext();
+  const navigate = useNavigate();
 
   return (
     <HeaderStyled themeColor={themeColor}>
@@ -36,8 +38,18 @@ const Header: React.FC = () => {
         Quickbit
       </Link>
       <div className="login__buttons">
-        <Button type="secondary" title="Login" className="login" />
-        <Button type="primary" title="Register" className="register" />
+        <Button
+          type="secondary"
+          title="Login"
+          className="login"
+          onClick={() => navigate("/login")}
+        />
+        <Button
+          type="primary"
+          title="Register"
+          className="register"
+          onClick={() => navigate("/register")}
+        />
       </div>
     </HeaderStyled>
   );
