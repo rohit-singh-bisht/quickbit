@@ -2,7 +2,7 @@ import React from "react";
 import { useThemeContext } from "../context/ColorThemeContext";
 import styled from "styled-components";
 import { Styles } from "../interfaces";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 
@@ -31,6 +31,7 @@ const HeaderStyled = styled.header<Styles>`
 const Header: React.FC = () => {
   const { themeColor } = useThemeContext();
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <HeaderStyled themeColor={themeColor}>
@@ -38,18 +39,22 @@ const Header: React.FC = () => {
         Quickbit
       </Link>
       <div className="login__buttons">
-        <Button
-          type="secondary"
-          title="Login"
-          className="login"
-          onClick={() => navigate("/login")}
-        />
-        <Button
-          type="primary"
-          title="Register"
-          className="register"
-          onClick={() => navigate("/register")}
-        />
+        {location?.pathname !== "/login" && (
+          <Button
+            type="secondary"
+            title="Login"
+            className="login"
+            onClick={() => navigate("/login")}
+          />
+        )}
+        {location?.pathname !== "/register" && (
+          <Button
+            type="primary"
+            title="Register"
+            className="register"
+            onClick={() => navigate("/register")}
+          />
+        )}
       </div>
     </HeaderStyled>
   );
