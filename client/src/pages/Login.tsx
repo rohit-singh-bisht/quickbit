@@ -11,9 +11,13 @@ const LoginStyle = styled.div<Styles>`
     max-width: 600px;
     width: 100%;
     .form_group {
+      margin-top: 20px;
       input {
         width: 100%;
-        height: 44px;
+        height: 4.4rem;
+        border-radius: 1rem;
+        outline: none;
+        padding: 0 1.2rem;
       }
     }
   }
