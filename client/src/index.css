@@ -44,9 +44,5 @@ body.dark input:-webkit-autofill,
 body.dark input:-webkit-autofill:hover,
 body.dark input:-webkit-autofill:focus,
 body.dark input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #0b101b inset !important; /* Transparent white background */
-}
-
-body.dark input::placeholder {
-  color: #fff;
+  background-color: red;
 }

@@ -13,7 +13,7 @@ const LoginStyle = styled.div<Styles>`
     width: 100%;
     .title {
       font-size: 3.2rem;
-      color: #fff;
+      color: ${({ themeColor }) => themeColor?.text};
       margin-bottom: 5rem;
       text-align: center;
     }
@@ -26,9 +26,9 @@ const LoginStyle = styled.div<Styles>`
         padding: 0 2rem;
         background: rgba(0, 0, 0, 0) !important;
         border: 0px;
-        border-bottom: 0.4rem solid #353c4a;
+        border-bottom: 0.4rem solid ${({ themeColor }) => themeColor?.border};
         color: #ffffff !important;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         letter-spacing: 0.05rem;
         &:-webkit-autofill {
           background: rgba(0, 0, 0, 0) !important;
