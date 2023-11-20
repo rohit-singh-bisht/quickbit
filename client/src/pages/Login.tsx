@@ -8,17 +8,37 @@ const LoginStyle = styled.div<Styles>`
   align-items: center;
   justify-content: center;
   .form__holder {
+    margin-top: 8rem;
     max-width: 600px;
     width: 100%;
+    .title {
+      font-size: 3.2rem;
+      color: #fff;
+      margin-bottom: 5rem;
+      text-align: center;
+    }
     .form_group {
-      margin-top: 20px;
+      margin-top: 2.4rem;
       input {
         width: 100%;
-        height: 4.4rem;
-        border-radius: 1rem;
+        height: 5rem;
         outline: none;
-        padding: 0 1.2rem;
+        padding: 0 2rem;
+        background: rgba(0, 0, 0, 0) !important;
+        border: 0px;
+        border-bottom: 0.4rem solid #353c4a;
+        color: #ffffff !important;
+        font-size: 1.4rem;
+        letter-spacing: 0.05rem;
+        &:-webkit-autofill {
+          background: rgba(0, 0, 0, 0) !important;
+        }
       }
+    }
+    .login_button {
+      width: 100%;
+      border-radius: 0;
+      margin-top: 2rem;
     }
   }
 `;
@@ -28,6 +48,7 @@ const Login = () => {
   return (
     <LoginStyle themeColor={themeColor}>
       <div className="form__holder">
+        <h2 className="title">Login</h2>
         <div className="form_group">
           <input type="email" placeholder="Enter your email" />
         </div>
