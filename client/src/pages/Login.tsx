@@ -16,18 +16,19 @@ const LoginStyle = styled.div<Styles>`
       color: ${({ themeColor }) => themeColor?.text};
       margin-bottom: 5rem;
       text-align: center;
+      text-decoration: underline;
     }
     .form_group {
       margin-top: 2.4rem;
       input {
         width: 100%;
-        height: 5rem;
+        height: 4.8rem;
         outline: none;
         padding: 0 2rem;
         background: rgba(0, 0, 0, 0) !important;
         border: 0px;
         border-bottom: 0.4rem solid ${({ themeColor }) => themeColor?.border};
-        color: #ffffff !important;
+        color: ${({ themeColor }) => themeColor?.text} !important;
         font-size: 1.6rem;
         letter-spacing: 0.05rem;
         &:-webkit-autofill {
@@ -50,10 +51,18 @@ const Login = () => {
       <div className="form__holder">
         <h2 className="title">Login</h2>
         <div className="form_group">
-          <input type="email" placeholder="Enter your email" />
+          <input
+            type="email"
+            autoComplete="email"
+            placeholder="Enter your email"
+          />
         </div>
         <div className="form_group">
-          <input type="password" placeholder="Enter Password" />
+          <input
+            type="password"
+            autoComplete="new-password"
+            placeholder="Enter Password"
+          />
         </div>
         <div className="form_group">
           <Button className="login_button" type="primary" title="Login" />
