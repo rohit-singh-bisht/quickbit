@@ -2,6 +2,13 @@ import styled from "styled-components";
 import { Styles } from "../interfaces";
 import { useThemeContext } from "../context/ColorThemeContext";
 import Button from "../components/Button";
+import { ChangeEvent, useState } from "react";
+import { useFetch } from "../hooks/useFetch";
+
+interface FormData {
+  email: string;
+  password: string;
+}
 
 const LoginStyle = styled.div<Styles>`
   display: flex;
@@ -46,6 +53,29 @@ const LoginStyle = styled.div<Styles>`
 
 const Login = () => {
   const { themeColor } = useThemeContext();
+  const [userDetails, setUserDetails] = useState<FormData>({
+    email: "",
+    password: "",
+  });
+  const { runFetch, isLoading, error, data } = useFetch();
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setUserDetails({
+      ...userDetails,
+      [name]: value,
+    });
+  };
+
+  const handleLogin = () => {
+    runFetch({
+      url: "login",
+      method: "post",
+      body: userDetails,
+    });
+  };
+
   return (
     <LoginStyle themeColor={themeColor}>
       <div className="form__holder">
@@ -55,6 +85,9 @@ const Login = () => {
             type="email"
             autoComplete="email"
             placeholder="Enter your email"
+            name="email"
+            value={userDetails?.email}
+            onChange={handleInputChange}
           />
         </div>
         <div className="form_group">
@@ -62,10 +95,18 @@ const Login = () => {
             type="password"
             autoComplete="new-password"
             placeholder="Enter Password"
+            name="password"
+            value={userDetails?.password}
+            onChange={handleInputChange}
           />
         </div>
         <div className="form_group">
-          <Button className="login_button" type="primary" title="Login" />
+          <Button
+            className="login_button"
+            onClick={handleLogin}
+            type="primary"
+            title="Login"
+          />
         </div>
       </div>
     </LoginStyle>
