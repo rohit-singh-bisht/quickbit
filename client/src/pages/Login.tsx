@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Styles } from "../interfaces";
 import { useThemeContext } from "../context/ColorThemeContext";
 import Button from "../components/Button";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 
 interface FormData {
@@ -48,6 +48,11 @@ const LoginStyle = styled.div<Styles>`
       border-radius: 0;
       margin-top: 2rem;
     }
+    &.error {
+      input {
+        border-bottom: 0.4rem solid #b63939;
+      }
+    }
   }
 `;
 
@@ -58,10 +63,12 @@ const Login = () => {
     password: "",
   });
   const { runFetch, isLoading, error, data } = useFetch();
+  const [isError, setIsError] = useState<Boolean>(false);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const value = e.target.value;
+    setIsError(false);
     setUserDetails({
       ...userDetails,
       [name]: value,
@@ -76,9 +83,15 @@ const Login = () => {
     });
   };
 
+  useEffect(() => {
+    if (!!error && !data?.success) {
+      setIsError(true);
+    }
+  }, [error, data]);
+
   return (
     <LoginStyle themeColor={themeColor}>
-      <div className="form__holder">
+      <div className={`form__holder ${isError ? "error" : ""}`}>
         <h2 className="title">Login</h2>
         <div className="form_group">
           <input
